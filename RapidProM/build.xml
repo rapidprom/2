@@ -1,5 +1,5 @@
+<project name="RapidProM" xmlns:ivy="antlib:org.apache.ivy.ant">
 
-<project name="RapidMiner_Plugin_Template_Unuk">
 	<description>Build file for the RapidMiner ProM extension</description>
 
 	<property name="rm.dir" location="../RapidMiner_Unuk" />
@@ -8,16 +8,16 @@
 	<property name="build.resources" location="resources" />
 	<property name="build.lib" location="lib" />
 
-	<property name="check.sources" location = "src" />
-	
+	<property name="check.sources" location="src" />
+
 	<property name="javadoc.targetDir" location="javadoc" />
 
 	<property name="extension.name" value="RapidProM" />
 	<property name="extension.name.long" value="RapidProM" />
 	<property name="extension.namespace" value="prom" />
-    <property name="extension.vendor" value="Eindhoven University of Technology" />
-    <property name="extension.admin" value="Alfredo Bolt" />
-    <property name="extension.url" value="www.rapidprom.org" />
+	<property name="extension.vendor" value="Eindhoven University of Technology" />
+	<property name="extension.admin" value="Alfredo Bolt, Sebastiaan J. van Zelst" />
+	<property name="extension.url" value="www.rapidprom.org" />
 
 
 	<property name="extension.needsVersion" value="5.3.009" />
@@ -35,6 +35,7 @@
 	<property name="extension.errorDescription" value="/com/rapidminer/resources/i18n/ErrorsProM.properties" />
 	<property name="extension.userErrors" value="/com/rapidminer/resources/i18n/UserErrorMessagesProM.properties" />
 	<property name="extension.guiDescription" value="/com/rapidminer/resources/i18n/GUIProM.properties" />
+	<property name="ivy.lib.dir" value="ivy" />
 
 
 	<!-- Src files -->
@@ -49,5 +50,25 @@
 	<fileset id="build.dependentExtensions" dir="..">
 	</fileset>
 
+	<path id="classpath">
+		<pathelement path="${build}" />
+		<pathelement path="${java.class.path}" />
+		<fileset dir=".">
+			<include name="ivy/**/*.jar" />
+			<include name="lib/**/*.jar" />
+		</fileset>
+	</path>
+
+	<target name="bootstrap" description="Used to install the ivy task jar">
+		<mkdir dir="${user.home}/.ant/lib" />
+		<get dest="${user.home}/.ant/lib/ivy.jar" src="https://repo1.maven.org/maven2/org/apache/ivy/ivy/2.2.0/ivy-2.2.0.jar" />
+	</target>
+
+	<target name="resolve" depends="bootstrap">
+		<ivy:retrieve sync="true" />
+	</target>
+
+
 	<import file="${rm.dir}/build_extension.xml" />
+
 </project>

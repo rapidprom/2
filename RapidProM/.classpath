@@ -5,51 +5,15 @@
 	<classpathentry kind="lib" path="lib/ProM-Contexts.jar"/>
 	<classpathentry kind="lib" path="lib/ProM-Models.jar"/>
 	<classpathentry kind="lib" path="lib/ProM-Plugins.jar"/>
-	<classpathentry kind="lib" path="D:/workspaces/RapidMiner/ProMRM/packages/guidetreeminer-6.5.13/GuideTreeMiner.jar"/>
-	<classpathentry kind="lib" path="D:/workspaces/RapidMiner/ProMRM/packages/petrinets-6.5.15/PetriNets.jar"/>
-	<classpathentry kind="lib" path="D:/workspaces/RapidMiner/ProMRM/packages/ilpminer-6.5.13/ILPMiner.jar"/>
-	<classpathentry kind="lib" path="D:/workspaces/RapidMiner/ProMRM/packages/geneticminer-6.1.44/GeneticMiner.jar"/>
-	<classpathentry kind="lib" path="D:/workspaces/RapidMiner/ProMRM/packages/heuristicsminer-6.5.12/HeuristicsMiner.jar"/>
-	<classpathentry kind="lib" path="D:/workspaces/RapidMiner/ProMRM/packages/rapidminer-6.4.6/RapidMiner.jar"/>
-	<classpathentry kind="lib" path="D:/workspaces/RapidMiner/ProMRM/packages/evolutionarytreeminer-6.3.302/EvolutionaryTreeMiner.jar"/>
-	<classpathentry kind="lib" path="D:/workspaces/RapidMiner/ProMRM/packages/processtree-6.5.33/ProcessTree.jar"/>
-	<classpathentry kind="lib" path="D:/workspaces/RapidMiner/ProMRM/packages/dottedchart-6.5.13/DottedChart.jar"/>
 	<classpathentry kind="lib" path="lib/ProM/commons-compress-1.0.jar"/>
-	<classpathentry kind="lib" path="D:/workspaces/RapidMiner/ProMRM/packages/inductiveminer-6.5.57/InductiveMiner.jar"/>
 	<classpathentry kind="lib" path="lib/ProM/jgraph.jar"/>
 	<classpathentry kind="lib" path="lib/ProM/slickerbox1.0rc1.jar"/>
-	<classpathentry kind="lib" path="D:/workspaces/RapidMiner/ProMRM/packages/uma-6.5.14/Uma.jar"/>
-	<classpathentry kind="lib" path="D:/workspaces/RapidMiner/ProMRM/packages/socialnetwork-6.3.82/SocialNetwork.jar"/>
-	<classpathentry kind="lib" path="D:/workspaces/RapidMiner/ProMRM/packages/logdialog-6.5.15/LogDialog.jar"/>
-	<classpathentry kind="lib" path="lib/Fuzzy.jar"/>
 	<classpathentry kind="lib" path="lib/ProM-Framework.jar"/>
 	<classpathentry kind="lib" path="lib/guava-16.0.1.jar"/>
 	<classpathentry kind="lib" path="lib/jargs.jar"/>
-	<classpathentry kind="lib" path="lib/javailp-1.1.jar"/>
-	<classpathentry kind="lib" path="lib/javailp-1.2a.jar"/>
 	<classpathentry kind="lib" path="lib/rmx_parallel-5.3.0.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="lib/OpenXES-XStream.jar"/>
-	<classpathentry kind="lib" path="lib/OpenXES.jar"/>
-	<classpathentry kind="lib" path="D:/workspaces/RapidMiner/ProMRM/packages/transitionsystems-6.5.13/TransitionSystems.jar"/>
 	<classpathentry kind="lib" path="lib"/>
-	<classpathentry kind="lib" path="D:/workspaces/RapidMiner/ProMRM/packages/animation-6.5.21/Animation.jar"/>
-	<classpathentry kind="lib" path="D:/workspaces/RapidMiner/ProMRM/packages/datapetrinets-6.5.64/DataPetriNets.jar"/>
-	<classpathentry kind="lib" path="D:/workspaces/RapidMiner/ProMRM/packages/bpmn-6.5.14/BPMN.jar"/>
-	<classpathentry kind="lib" path="D:/workspaces/RapidMiner/ProMRM/packages/pompomview-6.5.10/PomPomView.jar"/>
-	<classpathentry kind="lib" path="D:/workspaces/RapidMiner/ProMRM/packages/pnetreplayer-6.3.199/PNetReplayer.jar"/>
-	<classpathentry kind="lib" path="D:/workspaces/RapidMiner/ProMRM/packages/featureprediction-6.4.47/FeaturePrediction.jar"/>
-	<classpathentry kind="lib" path="D:/workspaces/RapidMiner/ProMRM/packages/woflan-6.4.123/Woflan.jar"/>
-	<classpathentry kind="lib" path="D:/workspaces/RapidMiner/ProMRM/packages/inductivevisualminer-6.5.83/InductiveVisualMiner.jar"/>
-	<classpathentry kind="lib" path="D:/workspaces/RapidMiner/ProMRM/packages/evolutionarytreeminer-6.5.17/EvolutionaryTreeMiner.jar"/>
-	<classpathentry kind="lib" path="D:/workspaces/RapidMiner/ProMRM/packages/pnetalignmentanalysis-6.3.108/PNetAlignmentAnalysis.jar"/>
-	<classpathentry kind="lib" path="D:/workspaces/RapidMiner/ProMRM/packages/divideandconquer-6.4.157/DivideAndConquer.jar"/>
-	<classpathentry kind="lib" path="D:/workspaces/RapidMiner/ProMRM/packages/dataawarereplayer-6.5.164/DataAwareReplayer.jar"/>
-	<classpathentry kind="lib" path="D:/workspaces/RapidMiner/ProMRM/packages/graphviz-6.5.82/GraphViz.jar"/>
-	<classpathentry kind="lib" path="D:/workspaces/RapidMiner/ProMRM/packages/processcomparator-6.5.16/ProcessComparator.jar"/>
-	<classpathentry kind="lib" path="D:/workspaces/RapidMiner/ProMRM/packages/cpnet-6.5.56/CPNet.jar"/>
-	<classpathentry kind="lib" path="D:/workspaces/RapidMiner/ProMRM/packages/emf-6.5.35/EMF.jar"/>
-	<classpathentry kind="lib" path="D:/workspaces/RapidMiner/ProMRM/packages/eventstream-6.5.31/EventStream.jar"/>
-	<classpathentry kind="lib" path="D:/workspaces/RapidMiner/ProMRM/packages/stream-6.5.42/Stream.jar"/>
+	<classpathentry kind="con" path="org.apache.ivyde.eclipse.cpcontainer.IVYDE_CONTAINER/?project=RapidProM&amp;ivyXmlPath=ivy.xml&amp;confs=*&amp;ivySettingsPath=ivysettings.xml&amp;loadSettingsOnDemand=false&amp;ivyUserDir=&amp;propertyFiles="/>
 	<classpathentry kind="output" path="build"/>
 </classpath>
