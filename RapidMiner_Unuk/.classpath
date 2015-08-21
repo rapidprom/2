@@ -5,7 +5,6 @@
 	<classpathentry kind="src" path="resources"/>
 	<classpathentry kind="src" path="src_launcher"/>
 	<classpathentry kind="src" path="src_test"/>
-	<classpathentry kind="src" path="resources_generated"/>
 	<classpathentry kind="src" path="src_agpl"/>
 	<classpathentry kind="lib" path="lib/kdb.jar"/>
 	<classpathentry kind="lib" path="lib/jmathplot.jar"/>
