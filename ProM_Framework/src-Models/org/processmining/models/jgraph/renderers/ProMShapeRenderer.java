@@ -76,7 +76,7 @@ public class ProMShapeRenderer extends VertexRenderer implements Cleanable {
 			d = getSize();
 		} else {
 			Rectangle2D bounds = view.getBounds();
-			view.setBounds(new Rectangle2D.Double(bounds.getX(), bounds.getY(), GraphConstants.DEFAULTFONT.getStringBounds(getText(), frc), d.getHeight()));
+			view.setBounds(new Rectangle2D.Double(bounds.getX(), bounds.getY(), GraphConstants.DEFAULTFONT.getStringBounds(getText(), frc).getWidth(), d.getHeight()));
 			setSize(d);
 		}
 
