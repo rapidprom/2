@@ -1,4 +1,4 @@
-<project name="RapidProM" xmlns:ivy="antlib:org.apache.ivy.ant">
+<project name="RapidProM" xmlns:ivy="antlib:org.apache.ivy.ant" default="install">
 
 	<description>Build file for the RapidMiner ProM extension</description>
 
@@ -35,7 +35,9 @@
 	<property name="extension.errorDescription" value="/com/rapidminer/resources/i18n/ErrorsProM.properties" />
 	<property name="extension.userErrors" value="/com/rapidminer/resources/i18n/UserErrorMessagesProM.properties" />
 	<property name="extension.guiDescription" value="/com/rapidminer/resources/i18n/GUIProM.properties" />
+
 	<property name="ivy.lib.dir" value="ivy" />
+	<property name="ivy.lib.location" value="${user.home}/.ant/lib/ivy" />
 
 
 	<!-- Src files -->
@@ -59,16 +61,28 @@
 		</fileset>
 	</path>
 
-	<target name="bootstrap" description="Used to install the ivy task jar">
-		<mkdir dir="${user.home}/.ant/lib" />
-		<get dest="${user.home}/.ant/lib/ivy.jar" src="https://repo1.maven.org/maven2/org/apache/ivy/ivy/2.2.0/ivy-2.2.0.jar" />
+
+	<path id="ivy.lib.path">
+		<fileset dir="ivy.lib.location" includes="*.jar" />
+	</path>
+
+	<target name="fetchIvy" description="Fetch ivy module from external location">
+		<mkdir dir="ivy.lib.location" />
+		<get dest="ivy.lib.location/ivy.jar" src="https://repo1.maven.org/maven2/org/apache/ivy/ivy/2.2.0/ivy-2.2.0.jar" />
 	</target>
 
-	<target name="resolve" depends="bootstrap">
+	<target name="loadIvy" depends="fetchIvy">
+		<taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant" classpathref="ivy.lib.path" />
+	</target>
+
+
+	<target name="resolve" depends="loadIvy">
 		<ivy:retrieve sync="true" />
 	</target>
 
 
-	<import file="${rm.dir}/build_extension.xml" />
+	<import file="${rm.dir}/build_extension.xml" as="rapidprom"/>
+	
+	<target name="install" depends="resolve, rapidprom.install" />
 
 </project>
