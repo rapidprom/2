@@ -1,0 +1,47 @@
+package com.rapidprom;
+
+import java.io.File;
+
+import org.processmining.contexts.cli.CLIPluginContext;
+import org.processmining.framework.plugin.PluginContext;
+
+import com.rapidminer.callprom.CallProm;
+import com.rapidminer.configuration.GlobalProMParameters;
+
+/**
+ * Singleton Object that instantiates ProM
+ * 
+ * @author svzelst
+ *
+ */
+public class ProMPluginContextManager {
+
+    protected static ProMPluginContextManager instance = null;
+
+    protected PluginContext context = null;
+
+    protected ProMPluginContextManager() {
+	setupProMContext();
+    }
+
+    public static ProMPluginContextManager instance() {
+	if (instance == null) {
+	    instance = new ProMPluginContextManager();
+	}
+	return instance;
+    }
+
+    public PluginContext getContext() {
+	return context;
+    }
+
+    protected void setupProMContext() {
+	File promLocation = null;
+	GlobalProMParameters instance = GlobalProMParameters.getInstance();
+	String promLocationStr = instance.getProMLocation();
+	promLocation = new File(promLocationStr);
+	CallProm tp = new CallProm();
+	CLIPluginContext promContext = tp.instantiateProM_Context(promLocation);
+	context = promContext.createChildContext("RapidProMChildContext");
+    }
+}
