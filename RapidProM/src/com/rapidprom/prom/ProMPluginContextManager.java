@@ -1,4 +1,4 @@
-package com.rapidprom;
+package com.rapidprom.prom;
 
 import java.io.File;
 
@@ -9,39 +9,40 @@ import com.rapidminer.callprom.CallProm;
 import com.rapidminer.configuration.GlobalProMParameters;
 
 /**
- * Singleton Object that instantiates ProM
+ * Singleton object that instantiates ProM such that RapidMiner operators can
+ * access the plugin context.
  * 
  * @author svzelst
  *
  */
 public class ProMPluginContextManager {
 
-    protected static ProMPluginContextManager instance = null;
+	protected static ProMPluginContextManager instance = null;
 
-    protected PluginContext context = null;
+	protected PluginContext context = null;
 
-    protected ProMPluginContextManager() {
-	setupProMContext();
-    }
-
-    public static ProMPluginContextManager instance() {
-	if (instance == null) {
-	    instance = new ProMPluginContextManager();
+	protected ProMPluginContextManager() {
+		setupProMContext();
 	}
-	return instance;
-    }
 
-    public PluginContext getContext() {
-	return context;
-    }
+	public static ProMPluginContextManager instance() {
+		if (instance == null) {
+			instance = new ProMPluginContextManager();
+		}
+		return instance;
+	}
 
-    protected void setupProMContext() {
-	File promLocation = null;
-	GlobalProMParameters instance = GlobalProMParameters.getInstance();
-	String promLocationStr = instance.getProMLocation();
-	promLocation = new File(promLocationStr);
-	CallProm tp = new CallProm();
-	CLIPluginContext promContext = tp.instantiateProM_Context(promLocation);
-	context = promContext.createChildContext("RapidProMChildContext");
-    }
+	public PluginContext getContext() {
+		return context;
+	}
+
+	protected void setupProMContext() {
+		File promLocation = null;
+		GlobalProMParameters instance = GlobalProMParameters.getInstance();
+		String promLocationStr = instance.getProMLocation();
+		promLocation = new File(promLocationStr);
+		CallProm tp = new CallProm();
+		CLIPluginContext promContext = tp.instantiateProM_Context(promLocation);
+		context = promContext.createChildContext("RapidProMChildContext");
+	}
 }
