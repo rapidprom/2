@@ -4,17 +4,17 @@
       <group key="context">
          <operator>
             <key>prom_context</key>
-            <class>com.rapidminer.context.ProMContextTask</class>
+            <class>com.rapidminer.promcontext.ProMContextTask</class>
          </operator>
          <operator>
             <key>clear_context</key>
-            <class>com.rapidminer.context.ClearContextTask</class>
+            <class>com.rapidminer.promcontext.ClearContextTask</class>
          </operator>
       </group>
       <group key="import">
          <operator>
-            <key>read_log</key>
-            <class>com.rapidminer.operator.importplugins.ReadLogTask</class>
+            <key>import_xes_log</key>
+            <class>com.rapidminer.operator.importplugins.ImportXESLogOperator</class>
          </operator>
          <operator>
             <key>read_cpn</key>

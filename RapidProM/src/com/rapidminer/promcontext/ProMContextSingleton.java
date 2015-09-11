@@ -1,22 +1,23 @@
-package com.rapidminer.context;
+package com.rapidminer.promcontext;
 
 import java.io.File;
 
 import org.processmining.contexts.cli.CLIPluginContext;
 import org.processmining.framework.plugin.PluginContext;
+import org.rapidprom.prom.CallProm;
 
-import com.rapidminer.callprom.CallProm;
 import com.rapidminer.configuration.GlobalProMParameters;
 
 public class ProMContextSingleton {
-	
+
 	private static ProMContextSingleton singleton = new ProMContextSingleton();
-	
+
 	private static String nameContext = "context";
 	private static PluginContext context = null;
-	
-	private ProMContextSingleton () {}
-	
+
+	private ProMContextSingleton() {
+	}
+
 	public static ProMContextSingleton getInstance() {
 		if (singleton == null) {
 			// start ProM
@@ -29,13 +30,15 @@ public class ProMContextSingleton {
 			// the location of prom.ini
 			promLocation = new File(promLocationStr);
 			CallProm tp = new CallProm();
-			CLIPluginContext promContext = tp.instantiateProM_Context(promLocation);
-			PluginContext childContext = promContext.createChildContext(nameContext);
+			CLIPluginContext promContext = tp
+					.instantiateProMContext(promLocation);
+			PluginContext childContext = promContext
+					.createChildContext(nameContext);
 			context = childContext;
 		}
 		return singleton;
 	}
-	
+
 	public PluginContext getContext() {
 		return context;
 	}

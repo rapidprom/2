@@ -8,8 +8,8 @@ import org.deckfour.xes.extension.std.XConceptExtension;
 import org.deckfour.xes.model.XLog;
 import org.deckfour.xes.model.XTrace;
 import org.processmining.framework.plugin.PluginContext;
+import org.rapidprom.prom.CallProm;
 
-import com.rapidminer.callprom.CallProm;
 import com.rapidminer.ioobjects.ProMContextIOObject;
 import com.rapidminer.ioobjects.XLogIOObject;
 import com.rapidminer.operator.Operator;

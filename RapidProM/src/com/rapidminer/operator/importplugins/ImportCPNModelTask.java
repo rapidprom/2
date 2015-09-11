@@ -6,8 +6,8 @@ import java.util.List;
 
 import org.processmining.framework.plugin.PluginContext;
 import org.processmining.plugins.cpnet.ColouredPetriNet;
+import org.rapidprom.prom.CallProm;
 
-import com.rapidminer.callprom.CallProm;
 import com.rapidminer.ioobjects.CPNModelIOObject;
 import com.rapidminer.ioobjects.ProMContextIOObject;
 import com.rapidminer.operator.Operator;

@@ -2,7 +2,6 @@ package com.rapidminer.operator.analysisplugins;
 
 import java.util.*;
 
-import com.rapidminer.callprom.CallProm;
 import com.rapidminer.example.ExampleSet;
 import com.rapidminer.example.ExampleSetFactory;
 import com.rapidminer.operator.Operator;
@@ -45,6 +44,7 @@ import com.rapidminer.ioobjects.BalancedReplayResultIOObject;
 
 import org.processmining.plugins.balancedconformance.result.BalancedReplayResult;
 import org.processmining.plugins.connectionfactories.logpetrinet.TransEvClassMapping;
+import org.rapidprom.prom.CallProm;
 
 
 public class ConformanceCheckingofDPNTask extends Operator {

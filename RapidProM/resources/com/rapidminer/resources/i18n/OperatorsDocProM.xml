@@ -164,10 +164,11 @@
 		<key>select_best_fuzzy_instance</key>
 	</operator>  
    <operator>
-        <name>Read Log (Path)</name>
-        <synopsis>This operator can be used to read a ProM XES log file.</synopsis>
-        <help>This operator can be used to read a ProM XES log file. Note that only XES files can be read! As input a ProM context and a log file is needed.</help>
-    <key>read_log</key>
+        <name>Import XLog (.xes)</name>
+        <synopsis>This operator can be used to import a ProM XES event log (.xes) file.</synopsis>
+        <help>This operator can be used to import a ProM XES event log file. 
+        Note that only .xes files can be read.</help>
+    <key>import_xes_log</key>
   </operator>
   
   <operator>
@@ -574,10 +575,6 @@
         <synopsis>This operator mines a fuzzy model</synopsis>
         <help>A log is required for input</help>
     	<key>mine_fuzzy_model</key>
-  	</operator>
-	
-	
-  	
-  	
+  	</operator>  	
 
 </operatorHelp>

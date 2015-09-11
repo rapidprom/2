@@ -30,8 +30,8 @@ import org.processmining.plugins.petrinet.replayresult.PNRepResult;
 import org.processmining.plugins.petrinet.replayresult.StepTypes;
 import org.processmining.plugins.pnalignanalysis.conformance.AlignmentPrecGenRes;
 import org.processmining.plugins.replayer.replayresult.SyncReplayResult;
+import org.rapidprom.prom.CallProm;
 
-import com.rapidminer.callprom.CallProm;
 import com.rapidminer.callprom.ClassLoaderUtils;
 import com.rapidminer.configuration.GlobalProMParameters;
 import com.rapidminer.example.Attribute;

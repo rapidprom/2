@@ -13,8 +13,8 @@ import org.processmining.framework.plugin.PluginContext;
 import org.processmining.models.jgraph.ProMJGraph;
 import org.processmining.models.jgraph.visualization.ProMJGraphPanel;
 import org.processmining.plugins.transitionsystem.miner.TSMinerTransitionSystem;
+import org.rapidprom.prom.CallProm;
 
-import com.rapidminer.callprom.CallProm;
 import com.rapidminer.ioobjects.HeuristicsNetIOObject;
 import com.rapidminer.ioobjects.TSMinerTransitionSystemIOObject;
 import com.rapidminer.gui.renderer.AbstractRenderer;

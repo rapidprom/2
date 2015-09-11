@@ -2,7 +2,6 @@ package com.rapidminer.operator.miningplugins;
 
 import java.util.*;
 
-import com.rapidminer.callprom.CallProm;
 import com.rapidminer.operator.Operator;
 import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
@@ -29,6 +28,7 @@ import com.rapidminer.ioobjects.ProcessTreeIOObject;
 import com.rapidminer.ioobjectrenderers.ProcessTreeIOObjectRenderer;
 
 import org.processmining.processtree.ProcessTree;
+import org.rapidprom.prom.CallProm;
 
 public class MineaProcessTreewithETMdTask extends Operator {
 

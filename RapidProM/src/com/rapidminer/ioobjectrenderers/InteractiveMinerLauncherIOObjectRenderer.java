@@ -9,9 +9,9 @@ import javax.swing.JComponent;
 import org.processmining.framework.plugin.PluginContext;
 import org.processmining.plugins.inductiveVisualMiner.InductiveVisualMiner;
 import org.processmining.plugins.inductiveVisualMiner.InductiveVisualMiner.InteractiveMinerLauncher;
+import org.rapidprom.prom.CallProm;
 
 import com.rapidminer.ioobjects.InteractiveMinerLauncherIOObject;
-import com.rapidminer.callprom.CallProm;
 import com.rapidminer.gui.renderer.AbstractRenderer;
 import com.rapidminer.gui.renderer.DefaultReadable;
 import com.rapidminer.operator.IOContainer;

@@ -7,10 +7,9 @@ import java.util.List;
 import javax.swing.JComponent;
 
 import org.processmining.framework.plugin.PluginContext;
-
 import org.processmining.plugins.graphviz.visualisation.DotPanel;
+import org.rapidprom.prom.CallProm;
 
-import com.rapidminer.callprom.CallProm;
 import com.rapidminer.gui.renderer.AbstractRenderer;
 import com.rapidminer.gui.renderer.DefaultComponentRenderable;
 import com.rapidminer.gui.renderer.DefaultReadable;

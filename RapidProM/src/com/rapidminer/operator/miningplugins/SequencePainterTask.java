@@ -9,8 +9,8 @@ import org.processmining.models.graphbased.directed.petrinet.Petrinet;
 import org.processmining.models.semantics.petrinet.Marking;
 import org.processmining.plugins.graphviz.visualisation.DotPanel;
 import org.processmining.processcomparator.parameters.SequencePainterParameters;
+import org.rapidprom.prom.CallProm;
 
-import com.rapidminer.callprom.CallProm;
 import com.rapidminer.ioobjects.DotPanelIOObject;
 import com.rapidminer.ioobjects.ProMContextIOObject;
 import com.rapidminer.ioobjects.XLogIOObject;

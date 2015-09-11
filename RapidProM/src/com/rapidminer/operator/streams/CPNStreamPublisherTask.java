@@ -5,6 +5,7 @@ import org.processmining.eventstream.authors.cpn.plugins.CPNModelToXSEventStream
 import org.processmining.eventstream.core.interfaces.XSEventStream;
 import org.processmining.framework.plugin.PluginContext;
 import org.processmining.stream.core.interfaces.XSPublisher;
+import org.rapidprom.prom.ProMPluginContextManager;
 
 import com.rapidminer.ioobjects.CPNModelIOObject;
 import com.rapidminer.ioobjects.MarkingIOObject;
@@ -18,7 +19,6 @@ import com.rapidminer.operator.ports.InputPort;
 import com.rapidminer.operator.ports.OutputPort;
 import com.rapidminer.operator.ports.metadata.GenerateNewMDRule;
 import com.rapidminer.tools.LogService;
-import com.rapidprom.ProMPluginContextManager;
 
 public class CPNStreamPublisherTask extends Operator {
 

@@ -1,35 +1,32 @@
 package com.rapidminer.ioobjects;
 
+import com.rapidminer.ioobjectrenderers.XLogIOObjectVisualizationType;
 import com.rapidminer.operator.ResultObjectAdapter;
 
-import org.processmining.contexts.cli.CLIPluginContext;
 import org.processmining.framework.plugin.PluginContext;
 import org.deckfour.xes.model.XLog;
-import org.deckfour.xes.model.impl.XLogImpl;
 
 public class XLogIOObject extends ResultObjectAdapter implements ProMIOObject {
-	
-	public enum VisualizationType { Table, ProM_Log_Visualizer, XDottedChart };
 
 	private static final long serialVersionUID = 1L;
 
-	private VisualizationType vt = VisualizationType.Table;
+	private XLogIOObjectVisualizationType vt = XLogIOObjectVisualizationType.EXAMPLE_SET;
 	private PluginContext pc = null;
 	private XLog xLog = null;
-	
-	public XLogIOObject () {
-		
+
+	public XLogIOObject() {
+
 	}
 
-	public XLogIOObject (XLog xLog) {
+	public XLogIOObject(XLog xLog) {
 		this.xLog = xLog;
 	}
 
-	public void setPluginContext (PluginContext pc) {
+	public void setPluginContext(PluginContext pc) {
 		this.pc = pc;
 	}
 
-	public PluginContext getPluginContext () {
+	public PluginContext getPluginContext() {
 		return this.pc;
 	}
 
@@ -49,20 +46,20 @@ public class XLogIOObject extends ResultObjectAdapter implements ProMIOObject {
 	public XLog getData() {
 		return xLog;
 	}
-	
+
 	public XLog getPromLog() {
 		return xLog;
 	}
-	
+
 	public void setPromLog(XLog log) {
 		this.xLog = log;
 	}
-	
-	public void setVisualizationType(VisualizationType vt) {
+
+	public void setVisualizationType(XLogIOObjectVisualizationType vt) {
 		this.vt = vt;
 	}
-	
-	public VisualizationType getVisualizationType () {
+
+	public XLogIOObjectVisualizationType getVisualizationType() {
 		return this.vt;
 	}
 

@@ -20,14 +20,14 @@
  *  You should have received a copy of the GNU Affero General Public License
  *  along with this program.  If not, see http://www.gnu.org/licenses/.
  */
-package com.rapidminer.context;
+package com.rapidminer.promcontext;
 
 import java.io.File;
 
 import org.processmining.contexts.cli.CLIPluginContext;
 import org.processmining.framework.plugin.PluginContext;
+import org.rapidprom.prom.CallProm;
 
-import com.rapidminer.callprom.CallProm;
 import com.rapidminer.configuration.GlobalProMParameters;
 import com.rapidminer.ioobjects.ProMContextIOObject;
 import com.rapidminer.operator.Operator;
@@ -36,8 +36,6 @@ import com.rapidminer.operator.OperatorException;
 import com.rapidminer.operator.ports.OutputPort;
 import com.rapidminer.operator.ports.metadata.GenerateNewMDRule;
 import com.rapidminer.tools.LogService;
-import com.rapidminer.tools.config.ConfigurationException;
-import com.rapidminer.tools.config.ConfigurationManager;
 import com.rapidminer.util.ProMIOObjectList;
 
 /**
@@ -47,15 +45,17 @@ import com.rapidminer.util.ProMIOObjectList;
 public class ProMContextTask extends Operator {
 
 	/** defining the ports */
-	private OutputPort output = getOutputPorts().createPort("context (ProM Context)");
-	
+	private OutputPort output = getOutputPorts().createPort(
+			"context (ProM Context)");
+
 	/**
 	 * The default constructor needed in exactly this signature
 	 */
 	public ProMContextTask(OperatorDescription description) {
 		super(description);
-		
-		getTransformer().addRule( new GenerateNewMDRule(output, ProMContextIOObject.class));
+
+		getTransformer().addRule(
+				new GenerateNewMDRule(output, ProMContextIOObject.class));
 	}
 
 	@Override
@@ -66,21 +66,23 @@ public class ProMContextTask extends Operator {
 		System.out.println("SYSOUT");
 		// get parameters
 		File promLocation = null;
-//		ProMConfigurable promConfigurable = (ProMConfigurable) instance.lookup("ProMConfig", "promconfig", null);
-//		String promLocationStr = promConfigurable.getParameter(ProMConfigurator.LOCATION_PROM_PACKAGES);
+		// ProMConfigurable promConfigurable = (ProMConfigurable)
+		// instance.lookup("ProMConfig", "promconfig", null);
+		// String promLocationStr =
+		// promConfigurable.getParameter(ProMConfigurator.LOCATION_PROM_PACKAGES);
 		GlobalProMParameters instance = GlobalProMParameters.getInstance();
 		String promLocationStr = instance.getProMLocation();
 		logService.log("promLocationStr:" + promLocationStr, LogService.NOTE);
 		// the location of prom.ini
 		promLocation = new File(promLocationStr);
 		CallProm tp = new CallProm();
-		CLIPluginContext promContext = tp.instantiateProM_Context(promLocation);
+		CLIPluginContext promContext = tp.instantiateProMContext(promLocation);
 		PluginContext childContext = promContext.createChildContext("test");
 		ProMContextIOObject pcioobject = new ProMContextIOObject(childContext);
 		ProMIOObjectList instanceIOObjectList = ProMIOObjectList.getInstance();
 		instanceIOObjectList.addToList(pcioobject);
 		output.deliver(pcioobject);
-		logService.log("end do work prom context",LogService.NOTE);
+		logService.log("end do work prom context", LogService.NOTE);
 	}
-	
+
 }

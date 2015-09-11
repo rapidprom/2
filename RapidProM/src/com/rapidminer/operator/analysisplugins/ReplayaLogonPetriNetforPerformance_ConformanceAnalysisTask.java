@@ -2,7 +2,6 @@ package com.rapidminer.operator.analysisplugins;
 
 import java.util.*;
 
-import com.rapidminer.callprom.CallProm;
 import com.rapidminer.example.ExampleSet;
 import com.rapidminer.example.ExampleSetFactory;
 import com.rapidminer.operator.Operator;
@@ -25,6 +24,7 @@ import com.rapidminer.ioobjects.XLogIOObject;
 import com.rapidminer.ioobjects.ManifestIOObject;
 
 import org.processmining.plugins.petrinet.manifestreplayresult.Manifest;
+import org.rapidprom.prom.CallProm;
 
 public class ReplayaLogonPetriNetforPerformance_ConformanceAnalysisTask extends Operator {
 

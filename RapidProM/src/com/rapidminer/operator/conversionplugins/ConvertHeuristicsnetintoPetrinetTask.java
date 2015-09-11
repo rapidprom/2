@@ -2,7 +2,6 @@ package com.rapidminer.operator.conversionplugins;
 
 import java.util.*;
 
-import com.rapidminer.callprom.CallProm;
 import com.rapidminer.operator.Operator;
 import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
@@ -21,6 +20,7 @@ import com.rapidminer.ioobjects.MarkingIOObject;
 
 import org.processmining.models.graphbased.directed.petrinet.Petrinet;
 import org.processmining.models.semantics.petrinet.Marking;
+import org.rapidprom.prom.CallProm;
 
 public class ConvertHeuristicsnetintoPetrinetTask extends Operator {
 

@@ -10,7 +10,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 import com.google.common.util.concurrent.SimpleTimeLimiter;
-import com.rapidminer.callprom.CallProm;
 import com.rapidminer.example.ExampleSet;
 import com.rapidminer.example.ExampleSetFactory;
 import com.rapidminer.operator.Operator;
@@ -39,6 +38,7 @@ import org.processmining.plugins.InductiveMiner.mining.MiningParametersIM;
 import org.processmining.plugins.InductiveMiner.mining.MiningParametersIMi;
 import org.processmining.plugins.InductiveMiner.mining.MiningParametersIMin;
 import org.processmining.plugins.petrinet.behavioralanalysis.woflan.WoflanDiagnosis;
+import org.rapidprom.prom.CallProm;
 
 public class AnalyzewithWoflanTask extends Operator {
 

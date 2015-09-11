@@ -3,8 +3,8 @@ package com.rapidminer.operator;
 import java.util.ArrayList;
 
 import org.processmining.framework.plugin.PluginContext;
+import org.rapidprom.prom.CallProm;
 
-import com.rapidminer.callprom.CallProm;
 import com.rapidminer.ioobjects.OutputFirstProMTaskIOObject;
 import com.rapidminer.ioobjects.ProMContextIOObject;
 import com.rapidminer.operator.ports.InputPort;

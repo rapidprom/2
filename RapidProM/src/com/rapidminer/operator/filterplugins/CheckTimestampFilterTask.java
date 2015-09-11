@@ -2,7 +2,6 @@ package com.rapidminer.operator.filterplugins;
 
 import java.util.*;
 
-import com.rapidminer.callprom.CallProm;
 import com.rapidminer.operator.Operator;
 import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
@@ -15,6 +14,7 @@ import com.rapidminer.parameters.*;
 
 import org.processmining.contexts.cli.CLIPluginContext;
 import org.processmining.framework.plugin.PluginContext;
+import org.rapidprom.prom.CallProm;
 
 import com.rapidminer.ioobjects.ProMContextIOObject;
 

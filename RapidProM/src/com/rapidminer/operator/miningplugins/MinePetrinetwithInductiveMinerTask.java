@@ -2,7 +2,6 @@ package com.rapidminer.operator.miningplugins;
 
 import java.util.*;
 
-import com.rapidminer.callprom.CallProm;
 import com.rapidminer.operator.Operator;
 import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
@@ -30,6 +29,7 @@ import com.rapidminer.ioobjects.XLogIOObject;
 import com.rapidminer.ioobjects.PetriNetIOObject;
 
 import org.processmining.models.graphbased.directed.petrinet.Petrinet;
+import org.rapidprom.prom.CallProm;
 
 public class MinePetrinetwithInductiveMinerTask extends Operator {
 	

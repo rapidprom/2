@@ -2,7 +2,6 @@ package com.rapidminer.operator.miningplugins;
 
 import java.util.*;
 
-import com.rapidminer.callprom.CallProm;
 import com.rapidminer.operator.Operator;
 import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
@@ -32,6 +31,7 @@ import com.rapidminer.ioobjects.XLogIOObject;
 import com.rapidminer.ioobjects.HeuristicsNetIOObject;
 
 import org.processmining.models.heuristics.HeuristicsNet;
+import org.rapidprom.prom.CallProm;
 
 public class MineforaHeuristicsNetusingHeuristicsMinerTask extends Operator {
 

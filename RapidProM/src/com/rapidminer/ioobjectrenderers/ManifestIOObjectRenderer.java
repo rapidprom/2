@@ -21,8 +21,8 @@ import org.processmining.plugins.petrinet.replayresult.visualization.PNLogReplay
 
 
 import org.processmining.plugins.pnalignanalysis.visualization.projection.PNLogReplayProjectedVisPanel;
+import org.rapidprom.prom.CallProm;
 
-import com.rapidminer.callprom.CallProm;
 import com.rapidminer.ioobjects.ManifestIOObject;
 import com.rapidminer.gui.renderer.AbstractRenderer;
 import com.rapidminer.gui.renderer.DefaultComponentRenderable;

@@ -2,7 +2,6 @@ package com.rapidminer.operator.miningplugins;
 
 import java.util.*;
 
-import com.rapidminer.callprom.CallProm;
 import com.rapidminer.operator.Operator;
 import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
@@ -28,6 +27,7 @@ import org.deckfour.xes.info.XLogInfoFactory;
 import org.processmining.models.graphbased.directed.fuzzymodel.metrics.MetricsRepository;
 import org.processmining.models.graphbased.directed.fuzzymodel.attenuation.Attenuation;
 import org.processmining.models.graphbased.directed.fuzzymodel.attenuation.NRootAttenuation;
+import org.rapidprom.prom.CallProm;
 
 import java.lang.Integer;
 

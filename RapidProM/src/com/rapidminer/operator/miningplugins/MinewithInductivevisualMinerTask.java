@@ -2,7 +2,6 @@ package com.rapidminer.operator.miningplugins;
 
 import java.util.*;
 
-import com.rapidminer.callprom.CallProm;
 import com.rapidminer.operator.Operator;
 import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
@@ -18,8 +17,8 @@ import com.rapidminer.ioobjects.XLogIOObject;
 import com.rapidminer.ioobjects.InteractiveMinerLauncherIOObject;
 
 import org.processmining.plugins.inductiveVisualMiner.InductiveVisualMiner;
-import org.processmining.plugins.inductiveVisualMiner.InductiveVisualMiner.InteractiveMinerLauncher;
 import org.processmining.plugins.inductiveVisualMiner.InductiveVisualMiner.*;
+import org.rapidprom.prom.CallProm;
 
 public class MinewithInductivevisualMinerTask extends Operator {
 

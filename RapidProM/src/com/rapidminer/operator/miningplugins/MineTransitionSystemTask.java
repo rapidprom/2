@@ -2,7 +2,6 @@ package com.rapidminer.operator.miningplugins;
 
 import java.util.*;
 
-import com.rapidminer.callprom.CallProm;
 import com.rapidminer.operator.Operator;
 import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
@@ -12,13 +11,18 @@ import com.rapidminer.operator.ports.metadata.GenerateNewMDRule;
 import com.rapidminer.tools.LogService;
 import com.rapidminer.parameter.*;
 import com.rapidminer.parameters.*;
+
 import org.processmining.framework.plugin.PluginContext;
+
 import com.rapidminer.ioobjects.ProMContextIOObject;
+
 import org.deckfour.xes.model.XLog;
 
 import com.rapidminer.ioobjects.XLogIOObject;
 import com.rapidminer.ioobjectrenderers.XLogIOObjectRenderer;
+
 import org.deckfour.xes.model.XLog;
+
 import com.rapidminer.ioobjects.TSMinerTransitionSystemIOObject;
 import com.rapidminer.ioobjects.DirectedGraphElementWeightsIOObject;
 import com.rapidminer.ioobjects.StartStateSetIOObject;
@@ -27,10 +31,12 @@ import com.rapidminer.ioobjectrenderers.TSMinerTransitionSystemIOObjectRenderer;
 import com.rapidminer.ioobjectrenderers.DirectedGraphElementWeightsIOObjectRenderer;
 import com.rapidminer.ioobjectrenderers.StartStateSetIOObjectRenderer;
 import com.rapidminer.ioobjectrenderers.AcceptStateSetIOObjectRenderer;
+
 import org.processmining.plugins.transitionsystem.miner.TSMinerTransitionSystem;
 import org.processmining.models.graphbased.directed.DirectedGraphElementWeights;
 import org.processmining.models.graphbased.directed.transitionsystem.StartStateSet;
 import org.processmining.models.graphbased.directed.transitionsystem.AcceptStateSet;
+import org.rapidprom.prom.CallProm;
 
 public class MineTransitionSystemTask extends Operator {
 

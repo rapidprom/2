@@ -2,7 +2,6 @@ package com.rapidminer.operator.miningplugins;
 
 import java.util.*;
 
-import com.rapidminer.callprom.CallProm;
 import com.rapidminer.operator.Operator;
 import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
@@ -42,6 +41,7 @@ import org.processmining.models.graphbased.directed.petrinet.PetrinetNode;
 import org.processmining.models.graphbased.directed.petrinet.elements.Place;
 import org.processmining.models.graphbased.directed.petrinet.elements.Transition;
 import org.processmining.models.semantics.petrinet.Marking;
+import org.rapidprom.prom.CallProm;
 
 import com.rapidminer.callprom.ClassLoaderUtils;
 import com.rapidminer.configuration.GlobalProMParameters;

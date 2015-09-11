@@ -9,8 +9,8 @@ import javax.swing.JLabel;
 
 import org.processmining.framework.plugin.PluginContext;
 import org.processmining.models.semantics.petrinet.Marking;
+import org.rapidprom.prom.CallProm;
 
-import com.rapidminer.callprom.CallProm;
 import com.rapidminer.ioobjects.MarkingIOObject;
 import com.rapidminer.gui.renderer.AbstractRenderer;
 import com.rapidminer.gui.renderer.DefaultReadable;

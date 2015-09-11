@@ -7,8 +7,8 @@ import javax.swing.JTextArea;
 
 import org.processmining.framework.plugin.PluginContext;
 import org.processmining.plugins.petrinet.behavioralanalysis.woflan.WoflanDiagnosis;
+import org.rapidprom.prom.CallProm;
 
-import com.rapidminer.callprom.CallProm;
 import com.rapidminer.ioobjects.WoflanDiagnosisIOObject;
 import com.rapidminer.gui.renderer.AbstractRenderer;
 import com.rapidminer.gui.renderer.DefaultReadable;

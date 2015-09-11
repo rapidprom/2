@@ -6,8 +6,8 @@ import java.util.List;
 
 import org.processmining.framework.plugin.PluginContext;
 import org.processmining.models.graphbased.directed.petrinet.Petrinet;
+import org.rapidprom.prom.CallProm;
 
-import com.rapidminer.callprom.CallProm;
 import com.rapidminer.ioobjectrenderers.PetriNetIOObjectRenderer;
 import com.rapidminer.ioobjects.PetriNetIOObject;
 import com.rapidminer.ioobjects.ProMContextIOObject;

@@ -2,7 +2,6 @@ package com.rapidminer.operator.conversionplugins;
 
 import java.util.*;
 
-import com.rapidminer.callprom.CallProm;
 import com.rapidminer.operator.Operator;
 import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
@@ -19,6 +18,7 @@ import com.rapidminer.ioobjects.BPMNDiagramIOObject;
 
 import org.processmining.models.graphbased.directed.bpmn.BPMNDiagram;
 import org.processmining.models.graphbased.directed.petrinet.PetrinetGraph;
+import org.rapidprom.prom.CallProm;
 
 public class ConvertPetrinettoBPMNTask extends Operator {
 

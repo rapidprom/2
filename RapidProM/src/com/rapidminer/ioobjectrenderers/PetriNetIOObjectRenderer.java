@@ -26,8 +26,8 @@ import org.processmining.framework.util.ui.scalableview.interaction.ZoomInteract
 import org.processmining.models.graphbased.directed.petrinet.Petrinet;
 import org.processmining.models.jgraph.ProMJGraph;
 import org.processmining.models.jgraph.visualization.ProMJGraphPanel;
+import org.rapidprom.prom.CallProm;
 
-import com.rapidminer.callprom.CallProm;
 import com.rapidminer.gui.renderer.AbstractRenderer;
 import com.rapidminer.gui.renderer.DefaultComponentRenderable;
 import com.rapidminer.gui.renderer.DefaultReadable;

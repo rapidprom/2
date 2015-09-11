@@ -2,7 +2,6 @@ package com.rapidminer.operator.analysisplugins;
 
 import java.util.*;
 
-import com.rapidminer.callprom.CallProm;
 import com.rapidminer.operator.Operator;
 import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
@@ -29,6 +28,7 @@ import com.rapidminer.ioobjects.MutableFuzzyGraphIOObject;
 import com.rapidminer.ioobjectrenderers.MutableFuzzyGraphIOObjectRenderer;
 
 import org.processmining.models.graphbased.directed.fuzzymodel.MutableFuzzyGraph;
+import org.rapidprom.prom.CallProm;
 
 public class SelectBestFuzzyInstanceTask extends Operator {
 

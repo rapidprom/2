@@ -14,8 +14,8 @@ import org.processmining.models.graphbased.directed.fuzzymodel.metrics.MetricsRe
 import org.processmining.models.jgraph.ProMJGraph;
 import org.processmining.models.jgraph.visualization.ProMJGraphPanel;
 import org.processmining.plugins.fuzzymodel.miner.ui.FastTransformerPanel;
+import org.rapidprom.prom.CallProm;
 
-import com.rapidminer.callprom.CallProm;
 import com.rapidminer.ioobjects.ManifestIOObject;
 import com.rapidminer.ioobjects.MetricsRepositoryIOObject;
 import com.rapidminer.gui.renderer.AbstractRenderer;

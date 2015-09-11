@@ -2,7 +2,6 @@ package com.rapidminer.operator.analysisplugins;
 
 import java.util.*;
 
-import com.rapidminer.callprom.CallProm;
 import com.rapidminer.operator.Operator;
 import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
@@ -12,16 +11,23 @@ import com.rapidminer.operator.ports.metadata.GenerateNewMDRule;
 import com.rapidminer.tools.LogService;
 import com.rapidminer.parameter.*;
 import com.rapidminer.parameters.*;
+
 import org.processmining.framework.plugin.PluginContext;
+
 import com.rapidminer.ioobjects.ProMContextIOObject;
+
 import org.deckfour.xes.model.XLog;
 
 import com.rapidminer.ioobjects.XLogIOObject;
 import com.rapidminer.ioobjectrenderers.XLogIOObjectRenderer;
+
 import org.deckfour.xes.model.XLog;
+
 import com.rapidminer.ioobjects.PredictorIOObject;
 import com.rapidminer.ioobjectrenderers.PredictorIOObjectRenderer;
+
 import org.processmining.prediction.Predictor;
+import org.rapidprom.prom.CallProm;
 
 public class PerformPredictionsofBusinessProcessFeaturesTask extends Operator {
 

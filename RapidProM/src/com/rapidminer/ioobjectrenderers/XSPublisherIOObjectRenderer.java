@@ -12,8 +12,8 @@ import org.processmining.models.jgraph.visualization.ProMJGraphPanel;
 import org.processmining.plugins.cpnet.ColouredPetriNet;
 import org.processmining.stream.core.interfaces.XSPublisher;
 import org.processmining.stream.visualizers.XSStreamPublisherVisualizer;
+import org.rapidprom.prom.CallProm;
 
-import com.rapidminer.callprom.CallProm;
 import com.rapidminer.gui.renderer.AbstractRenderer;
 import com.rapidminer.gui.renderer.DefaultComponentRenderable;
 import com.rapidminer.gui.renderer.DefaultReadable;

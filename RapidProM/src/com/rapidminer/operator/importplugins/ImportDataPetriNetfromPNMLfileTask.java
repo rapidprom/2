@@ -2,7 +2,6 @@ package com.rapidminer.operator.importplugins;
 
 import java.util.*;
 
-import com.rapidminer.callprom.CallProm;
 import com.rapidminer.operator.Operator;
 import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
@@ -31,6 +30,7 @@ import com.rapidminer.ioobjectrenderers.MarkingIOObjectRenderer;
 import org.processmining.models.graphbased.directed.petrinet.Petrinet;
 import org.processmining.models.graphbased.directed.petrinetwithdata.newImpl.PetriNetWithData;
 import org.processmining.models.semantics.petrinet.Marking;
+import org.rapidprom.prom.CallProm;
 
 public class ImportDataPetriNetfromPNMLfileTask extends Operator {
 

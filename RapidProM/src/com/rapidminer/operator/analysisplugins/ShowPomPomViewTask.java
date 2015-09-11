@@ -2,7 +2,6 @@ package com.rapidminer.operator.analysisplugins;
 
 import java.util.*;
 
-import com.rapidminer.callprom.CallProm;
 import com.rapidminer.operator.Operator;
 import com.rapidminer.operator.OperatorDescription;
 import com.rapidminer.operator.OperatorException;
@@ -10,14 +9,16 @@ import com.rapidminer.operator.ports.InputPort;
 import com.rapidminer.operator.ports.OutputPort;
 import com.rapidminer.operator.ports.metadata.GenerateNewMDRule;
 import com.rapidminer.tools.LogService;
+
 import org.processmining.framework.plugin.PluginContext;
 
 import com.rapidminer.ioobjects.ProMContextIOObject;
-
 import com.rapidminer.ioobjects.PetriNetIOObject;
 import com.rapidminer.ioobjects.XLogIOObject;
 import com.rapidminer.ioobjects.PomPomViewIOObject;
+
 import org.processmining.plugins.pompom.PomPomView;
+import org.rapidprom.prom.CallProm;
 
 public class ShowPomPomViewTask extends Operator {
 

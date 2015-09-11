@@ -1,11 +1,10 @@
-package com.rapidprom.prom;
+package org.rapidprom.prom;
 
 import java.io.File;
 
 import org.processmining.contexts.cli.CLIPluginContext;
 import org.processmining.framework.plugin.PluginContext;
 
-import com.rapidminer.callprom.CallProm;
 import com.rapidminer.configuration.GlobalProMParameters;
 
 /**
@@ -42,7 +41,7 @@ public class ProMPluginContextManager {
 		String promLocationStr = instance.getProMLocation();
 		promLocation = new File(promLocationStr);
 		CallProm tp = new CallProm();
-		CLIPluginContext promContext = tp.instantiateProM_Context(promLocation);
+		CLIPluginContext promContext = tp.instantiateProMContext(promLocation);
 		context = promContext.createChildContext("RapidProMChildContext");
 	}
 }

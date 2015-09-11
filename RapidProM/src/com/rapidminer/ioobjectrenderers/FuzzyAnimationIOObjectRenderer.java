@@ -2,16 +2,15 @@ package com.rapidminer.ioobjectrenderers;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import java.awt.Component;
+
 import javax.swing.JComponent;
 
 import org.processmining.framework.plugin.PluginContext;
 import org.processmining.plugins.fuzzymodel.anim.FuzzyAnimation;
+import org.rapidprom.prom.CallProm;
 
-import com.rapidminer.callprom.CallProm;
 import com.rapidminer.ioobjects.FuzzyAnimationIOObject;
-
 import com.rapidminer.gui.renderer.AbstractRenderer;
 import com.rapidminer.gui.renderer.DefaultReadable;
 import com.rapidminer.operator.IOContainer;
