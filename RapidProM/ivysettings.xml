@@ -10,11 +10,16 @@
             <artifact pattern="https://svn.win.tue.nl/repos/prom/Libraries/[module]/[revision]/[artifact]-[revision].[ext]" />
             <artifact pattern="https://svn.win.tue.nl/repos/prom/Libraries/[module]/[revision]/[artifact]_[revision].[ext]" />
          </url>
+         <url name="rapidprom" checkmodified="true">
+            <ivy pattern="https://github.com/[organisation]/libraries/raw/master/[module]-[revision]/ivy-[revision].xml" />
+            <artifact pattern="https://github.com/[organisation]/libraries/raw/master/[module]-[revision]/[module].[ext]" />
+            <artifact pattern="https://github.com/[organisation]/libraries/raw/master/[module]-[revision]/lib/[artifact].[ext]" />
+        </url>
         <ibiblio name="maven2" m2compatible="true"/>
-        <chain name="default" returnFirst="true">  
-            <resolver ref="prom" />  
-            <resolver ref="prom-libs" />  
-            <resolver ref="maven2" />  
+        <chain name="default" returnFirst="true">
+            <resolver ref="prom"/>
+            <resolver ref="prom-libs"/>
+            <resolver ref="maven2"/>  
         </chain>  
     </resolvers>
 </ivysettings>
