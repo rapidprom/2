@@ -5,9 +5,9 @@
         </description>
     </info>
     <dependencies>
-        <dependency org="prom" name="Animation" rev="latest" changing="true" transitive="true" />
-        <dependency org="prom" name="ApacheUtils" rev="latest" changing="true" transitive="true" />
-        <dependency org="prom" name="BasicUtils" rev="latest" changing="true" transitive="true" />
+        <dependency org="prom" name="Animation" rev="latest" changing="true" transitive="true"/>
+        <!--dependency org="prom" name="ApacheUtils" rev="latest" changing="true" transitive="true"/-->
+        <!--dependency org="prom" name="BasicUtils" rev="latest" changing="true" transitive="true"/-->
         <dependency org="prom" name="BPMN" rev="latest" changing="true" transitive="true" />
         <dependency org="prom" name="CPNet" rev="latest" changing="true" transitive="true" />
         <dependency org="prom" name="DataAwareReplayer" rev="latest" changing="true" transitive="true" />
@@ -26,7 +26,7 @@
         <dependency org="prom" name="InductiveMiner" rev="latest" changing="true" transitive="true" />
         <dependency org="prom" name="InductiveVisualMiner" rev="latest" changing="true" transitive="true" />
         <dependency org="prom" name="InteractiveVisualization" rev="latest" changing="true"/>
-        <dependency org="prom" name="Log" rev="latest" changing="true" transitive="true" />
+        <dependency org="org.rapidprom" name="Log" rev="6.5.159" changing="true" transitive="true"/>
         <dependency org="prom" name="LogDialog" rev="latest" changing="true" transitive="true" />
         <dependency org="prom" name="PetriNets" rev="latest" changing="true" transitive="true" />
         <dependency org="prom" name="PNetAlignmentAnalysis" rev="latest" changing="true" transitive="true" />
