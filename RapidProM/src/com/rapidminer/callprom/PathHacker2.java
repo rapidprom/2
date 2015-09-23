@@ -73,26 +73,10 @@ public class PathHacker2 {
 				}
 				addLibraryPathFromDirectory(f);
 			} else {
-				//skip
+				// skip
 			}
 		}
 	}
-
-	//	/**
-	//	 * tries to load the given file to the runtime environment
-	//	 * @param file
-	//	 * @throws IOException if an UnsatisfiedLinkError occurs
-	//	 * @throws SecurityException if a security manager exists and its checkLink method doesn't allow loading of the specified dynamic library
-	//	 * @throws UnsatisfiedLinkError if the file does not exist. 
-	//	 * @throws NullPointerException if filename is null
-	//	 */
-	//	public static void addLib(String file) throws Exception {
-	//		try {
-	//        	Runtime.getRuntime().load(file);
-	//		} catch(UnsatisfiedLinkError e) {
-	//			throw new IOException("UnsatisfiedLinkError");
-	//		}
-	//	}
 
 	public static void addJar(String s) {
 		File f = new File(s);
@@ -115,7 +99,8 @@ public class PathHacker2 {
 	 *            of the Java Archive
 	 */
 	public static void addJar(URL u) {
-		URLClassLoader sysloader = (URLClassLoader) ClassLoaderRapidMiner.getRapidMinerClassLoader();
+		URLClassLoader sysloader = (URLClassLoader) ClassLoaderRapidMiner
+				.getRapidMinerClassLoader();
 		for (URL u2 : sysloader.getURLs()) {
 			if (u.equals(u2)) {
 				return;
@@ -123,7 +108,8 @@ public class PathHacker2 {
 		}
 		try {
 			/* Class was uncheched, so used URLClassLoader.class instead */
-			Method method = URLClassLoader.class.getDeclaredMethod("addURL", parameters);
+			Method method = URLClassLoader.class.getDeclaredMethod("addURL",
+					parameters);
 			method.setAccessible(true);
 			method.invoke(sysloader, new Object[] { u });
 		} catch (Exception e) {
@@ -131,4 +117,3 @@ public class PathHacker2 {
 		}
 	}
 }
-

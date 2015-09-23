@@ -1,6 +1,6 @@
 <project name="RapidProM" xmlns:ivy="antlib:org.apache.ivy.ant" default="install">
-
 	<description>Build file for the RapidMiner ProM extension</description>
+	<property file="build.properties" />
 
 	<property name="rm.dir" location="../RapidMiner_Unuk" />
 
@@ -21,13 +21,10 @@
 
 
 	<property name="extension.needsVersion" value="5.3.009" />
-	<!--
-	<property name="extension.needsVersion" value="5.3.013" />
-	<property name="extension.needsVersion" value="5.3.015" />
-	-->
 	<property name="extension.dependencies" value="" />
 
-	<property name="extension.initClass" value="com.rapidminer.PluginInitProM" />
+	<property name="extension.initClass" value="org.rapidprom.RapidProMInitializer" />
+	<!--property name="extension.initClass" value="com.rapidminer.PluginInitProM" /-->
 	<property name="extension.objectDefinition" value="/com/rapidminer/resources/ioobjectsProM.xml" />
 	<property name="extension.operatorDefinition" value="/com/rapidminer/resources/OperatorsProM.xml" />
 	<property name="extension.parseRuleDefinition" value="/com/rapidminer/resources/parserulesProM.xml" />
@@ -81,8 +78,8 @@
 	</target>
 
 
-	<import file="${rm.dir}/build_extension.xml" as="rapidprom"/>
-	
+	<import file="${rm.dir}/build_extension.xml" as="rapidprom" />
+
 	<target name="install" depends="resolve, rapidprom.install" />
 
 </project>

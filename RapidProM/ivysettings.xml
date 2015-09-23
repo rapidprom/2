@@ -1,24 +1,25 @@
 <ivysettings>
-    <settings defaultResolver="default" />   
+    <properties file="build.properties" />
+    <settings defaultResolver="default" />
     <resolvers>
-        <url name="prom" checkmodified="true">
-            <ivy pattern="https://svn.win.tue.nl/repos/[organisation]/Releases/Packages/[module]/[revision]/ivy.xml" />
-            <artifact pattern="https://svn.win.tue.nl/repos/[organisation]/Releases/Packages/[module]/[revision]/[artifact]-[revision].[ext]" />
-        </url>
-        <url name="prom-libs">
-            <ivy pattern="https://svn.win.tue.nl/repos/prom/Libraries/[module]/[revision]/ivy.xml" />
-            <artifact pattern="https://svn.win.tue.nl/repos/prom/Libraries/[module]/[revision]/[artifact]-[revision].[ext]" />
-            <artifact pattern="https://svn.win.tue.nl/repos/prom/Libraries/[module]/[revision]/[artifact]_[revision].[ext]" />
-         </url>
          <url name="rapidprom" checkmodified="true">
-            <ivy pattern="https://github.com/[organisation]/libraries/raw/master/[module]-[revision]/ivy-[revision].xml" />
-            <artifact pattern="https://github.com/[organisation]/libraries/raw/master/[module]-[revision]/[module].[ext]" />
-            <artifact pattern="https://github.com/[organisation]/libraries/raw/master/[module]-[revision]/lib/[artifact].[ext]" />
+            <ivy pattern="https://github.com/rapidprom/libraries/raw/master/[module]-[revision]/ivy-[module]-[revision].xml" />
+            <artifact pattern="https://github.com/rapidprom/libraries/raw/master/[module]-[revision]/[module]-[revision].[ext]" />
         </url>
+        <url name="rapidprom-thirdparty-lib" checkmodified="true">
+            <ivy pattern="https://github.com/rapidprom/libraries/raw/master/thirdparty/lib/[module]-[revision]/ivy-[module]-[revision].xml" />
+            <artifact pattern="https://github.com/rapidprom/libraries/raw/master/thirdparty/lib/[module]-[revision]/[module]-[revision].[ext]" />
+        </url>
+        <url name="rapidprom-thirdparty-resource" checkmodified="true">
+            <ivy pattern="https://github.com/rapidprom/libraries/raw/master/thirdparty/resource/[module]-[revision]/ivy-[module]-[revision].xml" />
+            <artifact pattern="https://github.com/rapidprom/libraries/raw/master/thirdparty/resource/[module]-[revision]/[module]-[revision].[ext]" />
+            <artifact pattern="https://github.com/rapidprom/libraries/raw/master/thirdparty/resource/[module]-[revision]/[module]-[revision]_[type].[ext]" />
+        </url>        
         <ibiblio name="maven2" m2compatible="true"/>
         <chain name="default" returnFirst="true">
-            <resolver ref="prom"/>
-            <resolver ref="prom-libs"/>
+            <resolver ref="rapidprom"/>
+            <resolver ref="rapidprom-thirdparty-lib"/>
+            <resolver ref="rapidprom-thirdparty-resource"/>
             <resolver ref="maven2"/>  
         </chain>  
     </resolvers>

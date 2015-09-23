@@ -2,6 +2,7 @@ package com.rapidminer.ioobjectrenderers;
 
 import java.awt.Component;
 import java.io.File;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
@@ -15,8 +16,8 @@ import org.processmining.framework.plugin.PluginContext;
 import org.processmining.plugins.log.ui.logdialog.LogDialogInitializer;
 import org.processmining.plugins.log.ui.logdialog.SlickerOpenLogSettings;
 import org.rapidprom.AbstractMultipleVisualizersRenderer;
+import org.rapidprom.external.connectors.prom.ProMPluginContextManager;
 import org.rapidprom.prom.CallProm;
-import org.rapidprom.prom.ProMPluginContextManager;
 
 import com.rapidminer.gui.renderer.DefaultComponentRenderable;
 import com.rapidminer.gui.tools.ExtendedJScrollPane;
@@ -24,6 +25,7 @@ import com.rapidminer.gui.tools.ExtendedJTable;
 import com.rapidminer.ioobjects.XLogIOObject;
 import com.rapidminer.operator.IOContainer;
 import com.rapidminer.report.Reportable;
+import com.rapidminer.tools.ParameterService;
 import com.rapidminer.util.Utilities;
 import com.rapidminer.util.XLogUtils;
 import com.rapidminer.util.XLogUtils.ColumnNamesLog;
@@ -37,9 +39,12 @@ public class XLogIOObjectRenderer extends
 				"XLog renderer");
 	}
 
-	Component exampleSetComponent = null;
-	Component defaultComponent = null;
-	Component xDottedChartComponent = null;
+	private Component exampleSetComponent = null;
+	private WeakReference<XLog> exampleSetLog = null;
+	private Component defaultComponent = null;
+	private WeakReference<XLog> defaultLog = null;
+	private Component xDottedChartComponent = null;
+	private WeakReference<XLog> xDottedLog = null;
 
 	protected Component visualizeRendererOption(
 			XLogIOObjectVisualizationType e, Object renderable,
@@ -59,9 +64,12 @@ public class XLogIOObjectRenderer extends
 
 	protected Component createExampleSetComponet(Object renderable,
 			IOContainer ioContainer) {
-		if (exampleSetComponent == null) {
-			XLogIOObject object = (XLogIOObject) renderable;
+		XLogIOObject object = (XLogIOObject) renderable;
+		XLog log = object.getXLog();
+		if (exampleSetComponent == null || exampleSetLog == null
+				|| !(log.equals(exampleSetLog.get()))) {
 			final List<String> columnNames = new ArrayList<String>();
+			System.out.println("Render!");
 			ColumnNamesLog columnNames2 = XLogUtils.getColumnNames(object
 					.getPromLog());
 			columnNames.addAll(columnNames2.getAttribsTrace());
@@ -76,18 +84,22 @@ public class XLogIOObjectRenderer extends
 			}
 			exampleSetComponent = new ExtendedJScrollPane(new ExtendedJTable(
 					new DefaultTableModel(), true, true));
+			exampleSetLog = new WeakReference<XLog>(log);
 		}
 		return exampleSetComponent;
 	}
 
+	@SuppressWarnings("unused")
 	protected Component createDefaultVisualizerComponent(Object renderable,
 			IOContainer ioContainer) {
-		if (defaultComponent == null) {
+		XLogIOObject logioobject = (XLogIOObject) renderable;
+		XLog xLog = logioobject.getXLog();
+		if (defaultComponent == null || defaultLog == null
+				|| !(xLog.equals(defaultLog.get()))) {
 			try {
+				System.out.println("Render!");
 				CallProm tp = new CallProm();
 				List<Object> parameters = new ArrayList<Object>();
-				XLogIOObject logioobject = (XLogIOObject) renderable;
-				XLog xLog = logioobject.getXLog();
 				parameters.add(xLog);
 
 				// get location of logDialog package
@@ -95,7 +107,7 @@ public class XLogIOObjectRenderer extends
 				// ParameterService.getParameterValue("prom_folder");
 				// path = path.replace("ProM.ini", "");
 				// path = path + "packages" + File.separator +
-				// "logdialog-6.5.15"
+				// "logdialog-6.5.20"
 				// + File.separator + "lib";
 				// parameters.add(path);
 
@@ -105,8 +117,11 @@ public class XLogIOObjectRenderer extends
 				LogDialogInitializer i = new LogDialogInitializer();
 				SlickerOpenLogSettings o = new SlickerOpenLogSettings();
 
+				ClassLoader c = Thread.currentThread().getContextClassLoader();
+
 				defaultComponent = o.showLogVis(ProMPluginContextManager
 						.instance().getContext(), xLog);
+				defaultLog = new WeakReference<XLog>(xLog);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

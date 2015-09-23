@@ -1,14 +1,6 @@
 package com.rapidminer.operator.parallel;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 import java.util.TreeSet;
 import java.util.concurrent.Callable;
@@ -16,12 +8,10 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 import java.util.logging.Logger;
 
 import org.deckfour.xes.model.XLog;
 
-import com.rapidminer.ConcurrencyTools;
 import com.rapidminer.ioobjects.XLogIOObject;
 import com.rapidminer.operator.ExecutionUnit;
 import com.rapidminer.operator.IOObject;
@@ -39,9 +29,6 @@ import com.rapidminer.operator.ports.metadata.MetaData;
 import com.rapidminer.operator.ports.metadata.SubprocessTransformRule;
 import com.rapidminer.parameter.ParameterType;
 import com.rapidminer.parameter.ParameterTypeBoolean;
-import com.rapidminer.parameter.ParameterTypeInt;
-import com.rapidminer.parameter.ParameterTypeString;
-import com.rapidminer.parameter.conditions.BooleanParameterCondition;
 import com.rapidminer.util.SingleInstanceLock;
 import com.rapidminer.util.WriteToFile1;
 import com.rapidminer.util.WriteToFile2;

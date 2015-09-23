@@ -12,9 +12,7 @@ import java.util.Iterator;
 import java.util.Properties;
 import java.util.Vector;
 
-import org.deckfour.xes.nikefs2.NikeFS2FileAccessMonitor;
 import org.processmining.framework.boot.Boot;
-import org.processmining.framework.boot.Boot.Level;
 import org.processmining.framework.packages.PackageDescriptor;
 import org.processmining.framework.packages.PackageManager;
 import org.processmining.framework.plugin.PluginContext;
@@ -25,7 +23,6 @@ import org.processmining.framework.util.CommandLineArgumentList;
 import org.processmining.framework.util.OsUtil;
 
 import com.rapidminer.ClassLoaderRapidMiner;
-import com.rapidminer.configuration.GlobalProMParameters;
 import com.rapidminer.tools.LogService;
 
 

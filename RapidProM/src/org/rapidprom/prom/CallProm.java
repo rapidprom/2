@@ -17,25 +17,30 @@ import org.processmining.framework.connections.ConnectionCannotBeObtained;
 import org.processmining.framework.plugin.PluginContext;
 import org.processmining.framework.plugin.PluginContextID;
 import org.processmining.framework.plugin.PluginExecutionResult;
+import org.processmining.framework.plugin.PluginManager;
 import org.processmining.framework.plugin.PluginParameterBinding;
 import org.processmining.framework.plugin.events.Logger;
 import org.processmining.framework.providedobjects.SubstitutionType;
 import org.processmining.framework.util.Pair;
+import org.rapidprom.external.connectors.prom.RapidProMCLI;
 
 import com.rapidminer.callprom.BootProM;
-import com.rapidminer.callprom.CLI_CallProM;
 import com.rapidminer.tools.LogService;
 import com.rapidminer.util.ProMIOObjectList;
 
+@Deprecated
 public class CallProm {
 
+	@Deprecated
 	public CallProm() {
 	}
 
+	@Deprecated
 	public CLIPluginContext instantiateProMContext(File promLocation) {
 		return instantiateCLIContext(promLocation);
 	}
 
+	@Deprecated
 	public Object[] runPlugin(PluginContext pc, String nameChild,
 			String namePlugin, List<Object> parameters) {
 
@@ -54,8 +59,9 @@ public class CallProm {
 		for (int i = 0; i < parameters.size(); i++) {
 			t[i] = getSubstitutedType(parameters.get(i).getClass());
 		}
-		Set<PluginParameterBinding> plugins = pc.getPluginManager()
-				.getPluginsAcceptingOrdered(child.getClass(), false, t);
+		PluginManager pm = pc.getPluginManager();
+		Set<PluginParameterBinding> plugins = pm.getPluginsAcceptingOrdered(
+				child.getClass(), false, t);
 		System.out.println("TEST");
 		System.out.println("PRINT PLUGINS");
 		for (PluginParameterBinding pBinding : plugins) {
@@ -104,6 +110,7 @@ public class CallProm {
 		return results;
 	}
 
+	@Deprecated
 	public JComponent runVisualizationPlugin(PluginContext pc,
 			String nameChild, List<Object> parameters) {
 
@@ -127,6 +134,7 @@ public class CallProm {
 		return null;
 	}
 
+	@Deprecated
 	public JComponent runVisualizationPluginUsingName(PluginContext pc,
 			String nameChild, String namePlugin, List<Object> parameters) {
 
@@ -168,7 +176,7 @@ public class CallProm {
 			BootProM bswf = new BootProM(promLocation);
 			String[] args = new String[0];
 			Object obj;
-			obj = bswf.bootForSWF(CLI_CallProM.class, CLIPluginContext.class,
+			obj = bswf.bootForSWF(RapidProMCLI.class, CLIPluginContext.class,
 					args);
 			return (CLIPluginContext) obj;
 		} catch (Throwable e) {

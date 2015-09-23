@@ -1,21 +1,21 @@
 package com.rapidminer.operator.importplugins;
 
 import java.io.File;
-import java.util.ArrayList;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.swing.JOptionPane;
-
 import org.deckfour.xes.model.XLog;
 import org.processmining.framework.plugin.PluginContext;
+import org.processmining.plugins.log.OpenNaiveLogFilePlugin;
+import org.processmining.xeslite.plugin.OpenLogFileDiskImplPlugin;
+import org.processmining.xeslite.plugin.OpenLogFileLiteImplPlugin;
+import org.rapidprom.external.connectors.prom.ProMPluginContextManager;
 import org.rapidprom.operators.abstracts.AbstractProMOperator;
-import org.rapidprom.prom.CallProm;
-import org.rapidprom.prom.ProMPluginContextManager;
 
-import com.rapidminer.ioobjectrenderers.XLogIOObjectRenderer;
 import com.rapidminer.ioobjectrenderers.XLogIOObjectVisualizationType;
 import com.rapidminer.ioobjects.XLogIOObject;
 import com.rapidminer.operator.OperatorDescription;
@@ -32,44 +32,55 @@ import com.rapidminer.parameters.ParameterCategory;
 import com.rapidminer.tools.LogService;
 import com.rapidminer.util.ProMIOObjectList;
 
-
 public class ImportXESLogOperator extends AbstractProMOperator {
 
 	public enum ImplementingPlugin {
-		BUFFERED("Buffered", "Open XES Log File (Buffered)"), LIGHT_WEIGHT(
-				"Lightweight",
-				"Open XES Log File (Lightweight & Sequential IDs)"), MAPDB(
-				"Buffered by MAPDB",
-				"Open XES Log File (Disk-buffered by MapDB)"), NAIVE("Naive",
-				"Open XES Log File (Naive)"), NORMAL("Normal",
-				"Open XES Log File");
+		LIGHT_WEIGHT_SEQ_ID("Lightweight & Sequential IDs",
+				OpenLogFileLiteImplPlugin.class, "importFile", new Class<?>[] {
+						PluginContext.class, File.class }), MAP_DB(
+				"Buffered by MAPDB", OpenLogFileDiskImplPlugin.class,
+				"importFile",
+				new Class<?>[] { PluginContext.class, File.class }), NAIVE(
+				"Naive", OpenNaiveLogFilePlugin.class, "importFile",
+				new Class<?>[] { PluginContext.class, File.class });
 
 		private final String name;
 
-		private final String pluginName;
+		private final Class<?> clazz;
+		private final String method;
+		private final Class<?>[] args;
 
-		private ImplementingPlugin(final String name, final String pluginName) {
+		private ImplementingPlugin(final String name, Class<?> clazz,
+				String method, Class<?>[] args) {
 			this.name = name;
-			this.pluginName = pluginName;
-		}
-
-		public String getPluginName() {
-			return pluginName;
+			this.clazz = clazz;
+			this.method = method;
+			this.args = args;
 		}
 
 		@Override
 		public String toString() {
 			return name;
 		}
+
+		public Class<?> getImplementingClass() {
+			return clazz;
+		}
+
+		public String getImplementingMethod() {
+			return method;
+		}
+
+		public Class<?>[] getMethodArguments() {
+			return args;
+		}
 	}
 
-	private static final String PARAMETER_LABEL_FILENAME = "Filename";	
+	private static final String PARAMETER_LABEL_FILENAME = "Filename";
 	private static final String PARAMETER_LABEL_IMPORTERS = "Importer";
-	private static final String PARAMETER_LABEL_VISUALIZER= "Log visualizer";
 
 	private Parameter importerParameter = null;
 	private OutputPort output = getOutputPorts().createPort("Event Log (XLog)");
-	private Parameter visualizerParameter = null;
 
 	public ImportXESLogOperator(OperatorDescription description) {
 		super(description);
@@ -77,80 +88,68 @@ public class ImportXESLogOperator extends AbstractProMOperator {
 				new GenerateNewMDRule(output, XLogIOObject.class));
 	}
 
-	protected void checkMetaData() throws UserError {
-		try {
-			File file = getParameterAsFile(PARAMETER_LABEL_FILENAME);
-
-			if (!file.exists()) {
-				throw new UserError(this, "301", file);
-			} else if (!file.canRead()) {
-				throw new UserError(this, "302", file, "");
-			}
-		} catch (UndefinedParameterError e) {
-			e.printStackTrace();
+	protected boolean checkMetaData() throws UserError, UndefinedParameterError {
+		boolean result = false;
+		File file = getParameterAsFile(PARAMETER_LABEL_FILENAME);
+		if (!file.exists()) {
+			throw new UserError(this, "301", file);
+		} else if (!file.canRead()) {
+			throw new UserError(this, "302", file, "");
+		} else {
+			result = true;
 		}
+		return result;
 	}
 
 	@Override
 	public void doWork() throws OperatorException {
-
 		Logger logger = LogService.getRoot();
-		logger.log(Level.INFO, "Start importing .xes log");
-		long startExecution = System.currentTimeMillis();
-
-		PluginContext context = ProMPluginContextManager.instance()
-				.getContext();
-
-		// run the plugin for loading the log
-		File file = getParameterAsFile(PARAMETER_LABEL_FILENAME);
-		// int fileType = getParameterAsInt(PARAMETER_IMPORTERS);
-		// try to get the visualization par
-		Parameter parameter1 = visualizerParameter;
-		int par1int = getParameterAsInt(parameter1.getNameParameter());
-		XLogIOObjectVisualizationType valPar1 = (XLogIOObjectVisualizationType) parameter1
-				.getValueParameter(par1int);
+		logger.log(Level.INFO, "Start importing event log");
 		ImplementingPlugin importPlugin = (ImplementingPlugin) importerParameter
 				.getValueParameter(getParameterAsInt(importerParameter
 						.getNameParameter()));
-		// check if file exists and is readable
-		if (file == null || !file.exists()) {
-			throw new UserError(this, "301", file);
-		} else if (!file.canRead()) {
-			throw new UserError(this, "302", file, "");
+		XLog log = null;
+		if (checkMetaData()) {
+			log = importLog(
+					importPlugin,
+					new Object[] {
+							prepareChildContext(ImplementingPlugin.NAIVE
+									.getImplementingClass()),
+							getParameterAsFile(PARAMETER_LABEL_FILENAME) });
+			XLogIOObject xLogIOObject = new XLogIOObject(log);
+			xLogIOObject.setPluginContext(ProMPluginContextManager.instance()
+					.getContext());
+			xLogIOObject
+					.setVisualizationType(XLogIOObjectVisualizationType.DEFAULT);
+			output.deliver(xLogIOObject);
+			ProMIOObjectList instance = ProMIOObjectList.getInstance();
+			instance.addToList(xLogIOObject);
+			logger.log(Level.INFO, "End importing .xes log");
 		}
+	}
 
-		List<Object> parameters = new ArrayList<Object>();
-		parameters.add(file);
-		XLog promLog = null;
-		CallProm tp = new CallProm();
-
-		System.out.println(tp.toString());
-
+	private XLog importLog(ImplementingPlugin p, Object[] args) {
+		XLog result = null;
 		try {
-			promLog = (XLog) (tp.runPlugin(context, "000",
-					importPlugin.getPluginName(), parameters))[0];
-		} catch (Throwable e) {
+			Object importer = p.getImplementingClass().newInstance();
+			Method importMethod = p.getImplementingClass().getMethod(
+					p.getImplementingMethod(), p.getMethodArguments());
+			result = (XLog) importMethod.invoke(importer, args);
+		} catch (InstantiationException e) {
 			e.printStackTrace();
-			for (Object o : parameters)
-				System.out.println(o.toString());
-			JOptionPane
-					.showMessageDialog(
-							null,
-							"The Log could not be read. Please have a look at the error trace. Perhaps something is wrong with the file?",
-							"Read Log File Operator Error",
-							JOptionPane.ERROR_MESSAGE);
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (NoSuchMethodException e) {
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
 		}
-		// end plugin
-		XLogIOObject xLogIOObject = new XLogIOObject(promLog);
-		xLogIOObject.setPluginContext(context);
+		return result;
 
-		xLogIOObject.setVisualizationType(valPar1);
-
-		output.deliver(xLogIOObject);
-		// add to list so that afterwards it can be cleared if needed
-		ProMIOObjectList instance = ProMIOObjectList.getInstance();
-		instance.addToList(xLogIOObject);
-		logger.log(Level.INFO, "end do work first prom task");
 	}
 
 	@Override
@@ -172,29 +171,8 @@ public class ImportXESLogOperator extends AbstractProMOperator {
 				importersParameterCategory
 						.getIndexValue(importersParameterCategory
 								.getDefaultValueParameter()));
-
-		EnumSet<XLogIOObjectVisualizationType> visualizers = EnumSet
-				.allOf(XLogIOObjectVisualizationType.class);
-		Object[] par1Categories = visualizers.toArray();
-
-		ParameterCategory visualizersParameterCategory = new ParameterCategory(
-				par1Categories, XLogIOObjectVisualizationType.EXAMPLE_SET,
-				XLogIOObjectVisualizationType.class, "Visualize Log",
-				"Visualize Log");
-
-		ParameterTypeCategory visualizersParameterTypeCategroy = new ParameterTypeCategory(
-				visualizersParameterCategory.getNameParameter(),
-				visualizersParameterCategory.getDescriptionParameter(),
-				visualizersParameterCategory.getOptionsParameter(),
-				visualizersParameterCategory
-						.getIndexValue(visualizersParameterCategory
-								.getDefaultValueParameter()));
-
 		parameterTypes.add(logFileParameter);
 		parameterTypes.add(importersParameterTypeCategory);
-		parameterTypes.add(visualizersParameterTypeCategroy);
-
-		visualizerParameter = visualizersParameterCategory;
 		importerParameter = importersParameterCategory;
 		return parameterTypes;
 	}

@@ -1,8 +1,10 @@
 package com.rapidminer.callprom;
 
+import org.rapidprom.external.connectors.prom.RapidProMCLIContext;
+
 public class ReferenceMainPluginContext {
 	private static ReferenceMainPluginContext instance = null;
-	private CLIContextCallProM cliContextCallProm = null;
+	private RapidProMCLIContext cliContextCallProm = null;
 	
 	private ReferenceMainPluginContext () {
 		
@@ -15,11 +17,11 @@ public class ReferenceMainPluginContext {
 		return instance;
 	}
 	
-	public void setCliContextCallProm(CLIContextCallProM cliContextCallProm) {
+	public void setCliContextCallProm(RapidProMCLIContext cliContextCallProm) {
 		this.cliContextCallProm = cliContextCallProm;
 	}
 	
-	public CLIContextCallProM getCliContextCallProm() {
+	public RapidProMCLIContext getCliContextCallProm() {
 		return this.cliContextCallProm;
 	}
 }

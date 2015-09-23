@@ -5,11 +5,10 @@ import org.processmining.eventstream.authors.cpn.plugins.CPNModelToXSEventStream
 import org.processmining.eventstream.core.interfaces.XSEventStream;
 import org.processmining.framework.plugin.PluginContext;
 import org.processmining.stream.core.interfaces.XSPublisher;
-import org.rapidprom.prom.ProMPluginContextManager;
+import org.rapidprom.external.connectors.prom.ProMPluginContextManager;
 
 import com.rapidminer.ioobjects.CPNModelIOObject;
 import com.rapidminer.ioobjects.MarkingIOObject;
-import com.rapidminer.ioobjects.ProMContextIOObject;
 import com.rapidminer.ioobjects.XSEventStreamIOObject;
 import com.rapidminer.ioobjects.XSPublisherIOObject;
 import com.rapidminer.operator.Operator;
